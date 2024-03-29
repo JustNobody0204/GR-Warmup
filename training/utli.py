@@ -241,6 +241,8 @@ def clip_by_global_norm(x : flax.core.frozen_dict.FrozenDict) \
         x_clipped = jax.tree_multimap(
             lambda t: jnp.where(trigger, t, (t / g_norm) * FLAGS.config.gradient_clipping),
             x)
+    else:
+        return x
     return x_clipped
 
 
