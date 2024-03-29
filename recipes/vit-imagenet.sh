@@ -17,27 +17,25 @@ TRAIN_CONFIG_DIR=your-path-to-your-training-config-file.py
 ### The output dir where your would like to store your results.
 WORKING_DIR=your-path-to-your-output-dir
 
-MODEL_NAME=ViT_S16
+MODEL_NAME=Swin_Tiny_224
 
 INIT_SEEDS=0
 SEEDS=0
 BATCH_SIZE=256
-BASE_LR=1e-3
+BASE_LR=2e-3
 TOTAL_EPOCH=300
-### Will use the weight decay in Adam optimizer.
-L2_REG=0
+L2_REG=0.0
+WARM_UP=40
+GR_WARMUP_STRATEGY=zero
 
-DATASET_NAME=cifar10
-DATASET_IMAGE_LEVEL_AUG=basic
+DATASET_NAME=imagenet
+DATASET_IMAGE_LEVEL_AUG=none
 DATASET_BATCH_LEVEL_AUG=none
 
 OPT_TYPE=Adam
-OPT_WEIGHT_DECAY=0.3
+OPT_WEIGHT_DECAY=0.05
 
-WARM_UP=40
-GR_WARMUP_STRATEGY=zero # Should be none, r, lambda, zero
-
-GNP_R=0.1
+GNP_R=0.05
 GNP_ALPHA=1.0
 
 python3 -m gnp.main.main --config=${TRAIN_CONFIG_DIR} \
@@ -57,5 +55,6 @@ python3 -m gnp.main.main --config=${TRAIN_CONFIG_DIR} \
                          --config.opt.opt_params.weight_decay=$OPT_WEIGHT_DECAY \
                          --config.gnp.alpha=$GNP_ALPHA \
                          --config.gnp.r=$GNP_R \
-                         --config.model.model_name=$MODEL_NAME
-
+                         --config.model.model_name=$MODEL_NAME \
+                         --config.save_ckpt_every_n_epochs=5 \
+                         --imagenet_mixup_alpha=0.2 

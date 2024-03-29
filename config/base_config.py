@@ -105,11 +105,11 @@ def get_basic_config() -> ml_collections.ConfigDict:
     config.use_test_set=True
     config.use_additional_skip_connections_in_wrn = False
     config.no_weight_decay_on_bn = False
-    config.tfds_dir = "/data108/user_qc2/zy_temp/dataset/tensorflow_datasets"
-    config.imagenet_train_dir = "/data108/user_qc2/zy_temp/dataset/imagenet/imagenet_train_img"
-    config.imagenet_val_dir = "/data108/user_qc2/zy_temp/dataset/imagenet/imagenet_valset"
-    config.tinyimagenet_train_dir = "/data108/user_qc2/zy_temp/dataset/tinyimagenet/tinyimagenet/train"
-    config.tinyimagenet_val_dir = "/data108/user_qc2/zy_temp/dataset/tinyimagenet/tinyimagenet/val"
+    config.tfds_dir = None
+    config.imagenet_train_dir = None
+    config.imagenet_val_dir = None
+    config.tinyimagenet_train_dir = None
+    config.tinyimagenet_val_dir = None
 
     return config.lock()
 
