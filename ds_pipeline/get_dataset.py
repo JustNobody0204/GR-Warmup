@@ -27,7 +27,7 @@
 """
 
 from absl import flags
-from gnp.ds_pipeline.datasets import dataset_source, dataset_source_imagenet
+from gnp.ds_pipeline.datasets import dataset_source, dataset_source_imagenet, dataset_source_tinyimagenet
 
 FLAGS = flags.FLAGS
 
@@ -39,7 +39,7 @@ def get_dataset_pipeline():
 
         For currently, the available dataset are 
           __AVAILABLE_DATASET = {
-              "cifar10", "cifar100", "imagenet"
+              "cifar10", "cifar100", "imagenet", "tinyimagenet"
           }
 
     """
@@ -65,6 +65,13 @@ def get_dataset_pipeline():
             image_size=image_size
         )
         FLAGS.config.dataset.image_size = image_size
+    elif FLAGS.config.dataset.dataset_name == 'tinyimagenet':
+        image_size = 64
+        ds = dataset_source_tinyimagenet.TinyImagenet(
+            batch_size = FLAGS.config.batch_size, image_level_augmentations = FLAGS.config.dataset.image_level_augmentations,
+            image_size=image_size
+        )
+        FLAGS.config.dataset.image_size = image_size
     else:
         raise ValueError('Dataset not recognized.')
 
@@ -76,6 +83,9 @@ def get_dataset_pipeline():
     elif FLAGS.config.dataset.dataset_name == 'imagenet':   
         FLAGS.config.dataset.num_channels = 3
         FLAGS.config.dataset.num_classes = 1000
+    elif FLAGS.config.dataset.dataset_name == 'tinyimagenet':
+        FLAGS.config.dataset.num_channels = 3
+        FLAGS.config.dataset.num_classes = 200
     else:
         raise ValueError('Dataset not recognized.')
 

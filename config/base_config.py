@@ -108,6 +108,8 @@ def get_basic_config() -> ml_collections.ConfigDict:
     config.tfds_dir = "/data108/user_qc2/zy_temp/dataset/tensorflow_datasets"
     config.imagenet_train_dir = "/data108/user_qc2/zy_temp/dataset/imagenet/imagenet_train_img"
     config.imagenet_val_dir = "/data108/user_qc2/zy_temp/dataset/imagenet/imagenet_valset"
+    config.tinyimagenet_train_dir = "/data108/user_qc2/zy_temp/dataset/tinyimagenet/tinyimagenet/train"
+    config.tinyimagenet_val_dir = "/data108/user_qc2/zy_temp/dataset/tinyimagenet/tinyimagenet/val"
 
     return config.lock()
 

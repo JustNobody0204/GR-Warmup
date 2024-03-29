@@ -341,6 +341,8 @@ def VIT_TI16(num_outputs : int,
             patches=ml_collections.ConfigDict(dict(size=(4, 4)))
         elif num_outputs == 1000:
             patches=ml_collections.ConfigDict(dict(size=(16, 16)))
+        elif num_outputs == 200:
+            patches=ml_collections.ConfigDict(dict(size=(8, 8)))
         else:
             assert patches is not None
 
@@ -378,6 +380,8 @@ def VIT_S16(num_outputs : int,
         patches=ml_collections.ConfigDict(dict(size=(4, 4)))
     elif num_outputs == 1000:
         patches=ml_collections.ConfigDict(dict(size=(16, 16)))
+    elif num_outputs == 200:
+            patches=ml_collections.ConfigDict(dict(size=(8, 8)))
     else:
         assert patches is not None
 
@@ -415,6 +419,8 @@ def VIT_B16(num_outputs : int,
         patches=ml_collections.ConfigDict(dict(size=(4, 4)))
     elif num_outputs == 1000:
         patches=ml_collections.ConfigDict(dict(size=(16, 16)))
+    elif num_outputs == 200:
+            patches=ml_collections.ConfigDict(dict(size=(8, 8)))
     else:
         assert patches is not None
     
@@ -452,6 +458,8 @@ def VIT_L16(num_outputs : int,
         patches=ml_collections.ConfigDict(dict(size=(4, 4)))
     elif num_outputs == 1000:
         patches=ml_collections.ConfigDict(dict(size=(16, 16)))
+    elif num_outputs == 200:
+            patches=ml_collections.ConfigDict(dict(size=(8, 8)))
     else:
         assert patches is not None
     
